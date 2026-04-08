@@ -1,0 +1,98 @@
+{
+  "name": "vscode-path-linker",
+  "displayName": "VSCode Path Linker",
+  "description": "Get file path with line number easily",
+  "version": "0.1.0",
+  "publisher": "beancodebox",
+  "author": {
+    "name": "beancodebox",
+    "url": "https://github.com/beancodebox"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beancodebox/vscode-path-linker"
+  },
+  "homepage": "https://github.com/beancodebox/vscode-path-linker/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/beancodebox/vscode-path-linker/issues"
+  },
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:vscode-path-linker.copyPath",
+    "onCommand:vscode-path-linker.copyAbsolutePath",
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-path-linker.copyPath",
+        "title": "Copy Path with Line Number"
+      },
+      {
+        "command": "vscode-path-linker.copyAbsolutePath",
+        "title": "Copy Absolute Path with Line Number"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "vscode-path-linker.copyPath",
+          "group": "navigation",
+          "when": "editorFocus"
+        },
+        {
+          "command": "vscode-path-linker.copyAbsolutePath",
+          "group": "navigation",
+          "when": "editorFocus"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "vscode-path-linker.copyPath",
+        "key": "ctrl+shift+c",
+        "mac": "cmd+shift+c",
+        "when": "editorFocus"
+      },
+      {
+        "command": "vscode-path-linker.copyAbsolutePath",
+        "key": "ctrl+shift+alt+c",
+        "mac": "cmd+shift+alt+c",
+        "when": "editorFocus"
+      }
+    ],
+    "configuration": {
+      "title": "VSCode Path Linker",
+      "properties": {
+        "vscodePathLinker.useRelativePath": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use relative path instead of absolute path"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/node": "^16.0.0",
+    "typescript": "^4.3.0",
+    "tslint": "^6.1.3",
+    "eslint": "^7.32.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "compile",
+      "description": "Compile TypeScript to JavaScript",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "compile"
+      ],
+      "isBackground": true,
+      "problemMatcher": [
+        "$tsc"
+      ],
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "watch",
+      "description": "Watch TypeScript files and compile",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "watch"
+      ],
+      "isBackground": true,
+      "problemMatcher": [
+        "$tsc"
+      ]
+    }
+  ]
+}
