@@ -28,9 +28,8 @@
         "watch"
       ],
       "isBackground": true,
-      "problemMatcher": [
-        "$tsc"
-      ]
+      "problemMatcher": "$tsc-watch"
+      // "problemMatcher": ["$tsc"]
     }
   ]
 }
