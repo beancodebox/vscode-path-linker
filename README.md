@@ -40,12 +40,19 @@ code --install-extension beancodebox.vscode-path-linker
 
    **또는 명령어**:
    ```bash
-   code --install-extension ~/Downloads/vscode-path-linker-0.1.0.vsix
+   code --install-extension ~/Downloads/vscode-path-linker-0.2.0.vsix
    ```
 
    **또는 curl 사용** (자동 다운로드):
    ```bash
-   curl -L https://github.com/beancodebox/vscode-path-linker/releases/download/v0.1.0/vscode-path-linker-0.1.0.vsix -o /tmp/vscode-path-linker-0.1.0.vsix && code --install-extension /tmp/vscode-path-linker-0.1.0.vsix
+    # linux
+    curl -L https://github.com/beancodebox/vscode-path-linker/releases/download/v0.2.0/vscode-path-linker-0.2.0.vsix -o /tmp/vscode-path-linker-0.2.0.vsix && code --install-extension /tmp/vscode-path-linker-0.2.0.vsix
+
+    # windows (cmd)
+    curl -L https://github.com/beancodebox/vscode-path-linker/releases/download/v0.2.0/vscode-path-linker-0.2.0.vsix -o "%TEMP%\vscode-path-linker-0.2.0.vsix" && code --install-extension "%TEMP%\vscode-path-linker-0.2.0.vsix"
+
+    # windows (powershell)
+    curl.exe -L https://github.com/beancodebox/vscode-path-linker/releases/download/v0.2.0/vscode-path-linker-0.2.0.vsix -o "$env:TEMP\vscode-path-linker-0.2.0.vsix"; code --install-extension "$env:TEMP\vscode-path-linker-0.2.0.vsix"
    ```
 
 ## 사용법
@@ -155,13 +162,6 @@ npm run watch
 
 # 디버그 모드 (VSCode에서 F5)
 ```
-
-### 개발 문서
-
-자세한 개발 가이드는 [docs/tools/vscode-path-linker/](../../docs/tools/vscode-path-linker/)를 참고하세요:
-
-- [GUIDE.md](../../docs/tools/vscode-path-linker/GUIDE.md) - VSCode 확장 개발 사전 지식
-- [IMPLEMENTATION.md](../../docs/tools/vscode-path-linker/IMPLEMENTATION.md) - 단계별 구현 가이드
 
 ## 라이선스
 

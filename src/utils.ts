@@ -1,11 +1,12 @@
-import * as vscode from 'vscode';
-import * as path from 'path';
+import * as vscode from "vscode";
+import * as path from "path";
 
 /**
  * 절대 경로를 상대 경로로 변환
  */
 export function getRelativePath(filePath: string): string {
   const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
+
   if (!workspaceFolder) {
     return filePath;
   }
@@ -29,8 +30,8 @@ export function hasSelection(): boolean {
  * 설정값 읽기
  */
 export function getUseRelativePath(): boolean {
-  const config = vscode.workspace.getConfiguration('vscodePathLinker');
-  return config.get('useRelativePath', true);
+  const config = vscode.workspace.getConfiguration("vscodePathLinker");
+  return config.get("useRelativePath", true);
 }
 
 /**
@@ -40,15 +41,40 @@ export function formatPathWithLine(
   filePath: string,
   startLine: number,
   endLine?: number,
-  useRelative: boolean = true
+  useRelative: boolean = true,
 ): string {
-  const displayPath = useRelative ? getRelativePath(filePath) : filePath;
+  let displayPath = useRelative ? getRelativePath(filePath) : filePath;
+  
+  const config = vscode.workspace.getConfiguration("vscodePathLinker");
+  const pathStyle = config.get<"os" | "unix">("pathStyle", "os");
 
-  if (endLine && endLine > startLine) {
-    return `${displayPath}:${startLine}-${endLine}`;
+  if (pathStyle === "unix") {
+    displayPath = displayPath.replace(/\\/g, "/");
   }
 
-  return `${displayPath}:${startLine}`;
+  const outputStyle = config.get<"standard" | "github">(
+    "outputStyle",
+    "standard",
+  );
+  let separator: string,
+    linePrefix: string,
+    betweenSeparator = "-";
+  switch (outputStyle) {
+    case "github":
+      // file.ext#L100-L101
+      [separator, linePrefix] = ["#", "L"];
+      break;
+    case "standard":
+    default:
+      // file.ext:100-101
+      [separator, linePrefix] = [":", ""];
+  }
+
+  if (endLine && endLine > startLine) {
+    return `${displayPath}${separator}${linePrefix}${startLine}${betweenSeparator}${linePrefix}${endLine}`;
+  }
+
+  return `${displayPath}${separator}${linePrefix}${startLine}`;
 }
 
 /**
@@ -73,7 +99,7 @@ export function getCurrentPathInfo(useRelative: boolean = true) {
       filePath,
       startLine,
       startLine !== endLine ? endLine : undefined,
-      useRelative
+      useRelative,
     ),
   };
 }
