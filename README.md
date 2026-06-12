@@ -39,20 +39,26 @@ code --install-extension beancodebox.vscode-path-linker
    - 다운로드한 VSIX 파일 선택
 
    **또는 명령어**:
+
    ```bash
    code --install-extension ~/Downloads/vscode-path-linker-0.2.0.vsix
    ```
 
    **또는 curl 사용** (자동 다운로드):
+
    ```bash
-    # linux
-    curl -L https://github.com/beancodebox/vscode-path-linker/releases/download/v0.2.0/vscode-path-linker-0.2.0.vsix -o /tmp/vscode-path-linker-0.2.0.vsix && code --install-extension /tmp/vscode-path-linker-0.2.0.vsix
+   # linux
+   curl -L https://github.com/beancodebox/vscode-path-linker/releases/download/v0.2.0/vscode-path-linker-0.2.0.vsix -o /tmp/vscode-path-linker-0.2.0.vsix && code --install-extension /tmp/vscode-path-linker-0.2.0.vsix
+   ```
 
-    # windows (cmd)
-    curl -L https://github.com/beancodebox/vscode-path-linker/releases/download/v0.2.0/vscode-path-linker-0.2.0.vsix -o "%TEMP%\vscode-path-linker-0.2.0.vsix" && code --install-extension "%TEMP%\vscode-path-linker-0.2.0.vsix"
+   ```
+   # windows (cmd)
+   curl -L https://github.com/beancodebox/vscode-path-linker/releases/download/v0.2.0/vscode-path-linker-0.2.0.vsix -o "%TEMP%\vscode-path-linker-0.2.0.vsix" && code --install-extension "%TEMP%\vscode-path-linker-0.2.0.vsix"
+   ```
 
-    # windows (powershell)
-    curl.exe -L https://github.com/beancodebox/vscode-path-linker/releases/download/v0.2.0/vscode-path-linker-0.2.0.vsix -o "$env:TEMP\vscode-path-linker-0.2.0.vsix"; code --install-extension "$env:TEMP\vscode-path-linker-0.2.0.vsix"
+   ```
+   # windows (powershell)
+   curl.exe -L https://github.com/beancodebox/vscode-path-linker/releases/download/v0.2.0/vscode-path-linker-0.2.0.vsix -o "$env:TEMP\vscode-path-linker-0.2.0.vsix"; code --install-extension "$env:TEMP\vscode-path-linker-0.2.0.vsix"
    ```
 
 ## 사용법
@@ -103,12 +109,15 @@ VSCode 설정(`Ctrl+,`)에서 "VSCode Path Linker"를 검색하여 수정:
 ## 📸 스크린샷
 
 ### 상태바 실시간 표시
+
 커서 위치의 파일경로와 줄번호가 상태바(하단 우측)에 실시간으로 표시됩니다.
 
 ### 범위 선택 감지
+
 코드를 선택하면 시작줄과 끝줄을 자동으로 감지합니다.
 
 ### 우클릭 메뉴
+
 편집기에서 우클릭하면 컨텍스트 메뉴에 복사 옵션이 나타납니다.
 
 > 더 자세한 스크린샷 준비 방법: [media/SCREENSHOTS.md](media/SCREENSHOTS.md)
